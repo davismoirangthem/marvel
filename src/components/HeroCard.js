@@ -9,7 +9,7 @@ import '../styles/Card.css';
 
 class HeroCard extends Component{
   goToDescription = () => {
-    this.props.history.push(`/mcu-hero/${this.props.hero.id}`);
+    this.props.history.push(`/mcu/hero/${this.props.hero.id}`);
   }
 
   render(){

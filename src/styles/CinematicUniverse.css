@@ -1,3 +1,18 @@
-.main-container{
+.main-container {
   padding: 2%;
+}
+
+.search-container {
+  width: 40%;
+  margin-left: 2%;
+  margin-top: 1%;
+}
+
+.autosuggest-box {
+  position: absolute;
+  z-index: 1;
+  background-color: #F7F4F4;
+  padding: 1%;
+  width: 38%;
+  cursor: pointer;
 }
