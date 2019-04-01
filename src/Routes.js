@@ -12,7 +12,7 @@ class Routes extends Component{
         <Switch>
           <Route path="/" exact component={LandingPage} />
           <Route path="/mcu" exact component={CinematicUniverse} />
-          <Route path="/mcu/hero/:id" exact component={McuHeroDescription} />
+          <Route path="/mcu/character/:id" exact component={McuHeroDescription} />
           <Route path="/dashboard" exact component={Dashboard} />
         </Switch>
       </BrowserRouter>
