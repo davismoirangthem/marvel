@@ -39,18 +39,18 @@ class McuHeroDescription extends Component{
   render(){
     return(
       <React.Fragment>
-        <CommonHeader title='Marvel Cinematic Universe' />
+        <CommonHeader title='Marvel Cinematic Universe' history={this.props.history}/>
         <div className='character-description-container'>
           {this.state.character ? (
             <React.Fragment>
               <Grid container spacing={24}>
                 <Grid item xs={12} sm={12} md={6} lg={5} xl={4}>
-                  <img src={this.state.character.imageUrl} alt='hero image' height='250 px' />
+                  <img src={this.state.character.imageUrl} alt='hero_image' height='250' />
                 </Grid>
                 <Grid item xs={12} sm={12} md={6} lg={7} xl={8}>
                   <h2>Name: {this.state.character.name}</h2>
                   <h2>Alias: {this.state.character.alias}</h2>
-                  <h2>Played By:<a target='_blank' href={`${this.state.character.actorImdbLink}`}> {this.state.character.playedBy}</a></h2>
+                  <h2>Played By:<a target='_blank' rel="noopener noreferrer" href={`${this.state.character.actorImdbLink}`}> {this.state.character.playedBy}</a></h2>
                   <h2>First Appeared In: {this.state.character.firstAppearedIn}</h2>
                 </Grid>
               </Grid>
@@ -59,7 +59,7 @@ class McuHeroDescription extends Component{
               <br />
               <h2>Brief Description</h2>
               <p>{this.state.character.description}</p>
-              <p><a target='_blank' href={`${this.state.character.marvelUrl}`}>Know More</a></p>
+              <p><a target='_blank' rel="noopener noreferrer" href={`${this.state.character.marvelUrl}`}>Know More</a></p>
               <Divider variant='middle' />
               <br />
               <h2>MCU Movie Appearances</h2>
@@ -78,7 +78,7 @@ class McuHeroDescription extends Component{
                       <TableCell>{movie.name}</TableCell>
                       <TableCell>{movie.year}</TableCell>
                       <TableCell>{movie.appearanceType}</TableCell>
-                      <TableCell><a target='_blank' href={`${movie.imdbLink}`}>Visit</a></TableCell>
+                      <TableCell><a target='_blank' rel="noopener noreferrer" href={`${movie.imdbLink}`}>Visit</a></TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

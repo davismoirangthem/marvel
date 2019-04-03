@@ -1,0 +1,115 @@
+.position_relative{
+  margin-top: -50px;
+  background: #fff;
+  padding: 1px;
+  .most_searched_container{
+    .card-container{
+      transform: scale(1);
+      -webkit-filter: grayscale(0%);
+      filter: grayscale(0%);
+      .card_content{
+        position: absolute;
+        bottom: 0;
+        width: inherit;
+        text-align: left;
+        background-color: transparent;
+        background-image: linear-gradient(transparent 10%, black 90%);
+        padding: 10px;
+      }
+    }
+  }
+}
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  @media only screen and (max-width: 678px){
+    margin: 15px;
+  }
+  .featured_char_text{
+    @media only screen and (max-width: 678px){
+      font-size: 16px;
+      margin: 10px 0px;
+    }
+  }
+}
+
+.search-container {
+  width: 100%;
+  height: 65vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background: url('../static/images/marvel_bg.jpg') bottom, rgba(0,0,0,1);
+  @media only screen and (max-width: 678px){
+    margin: 0 auto;
+    width: 100%;
+    height: 55vh;
+    background: url('../static/images/marvel_bg.jpg'), rgba(0,0,0,1);
+    background-size: cover;
+  } 
+  .autosuggest_container{
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+    .mobile-break{
+      display: none;
+    }
+    @media only screen and (max-width: 678px){
+      width: 90%;
+      .mobile-break{
+        display: block;
+      }
+    }
+    input{
+      width: 95.5%;
+      padding: 18px 20px;
+      border-radius: 4px;
+      border: 0;
+      outline: 0;
+      font-size: 16px;
+      box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+      @media only screen and (max-width: 678px){
+        width: 88%;
+        padding: 15px 20px;
+        font-size: 16px;
+      }
+    }
+    .welcome-tag{
+      color: #fff;
+      margin: 20px auto;
+      font-size: 40px;
+      @media only screen and (max-width: 678px){
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.autosuggest-box {
+  position: absolute;
+  z-index: 10;
+  background-color: #fff;
+  padding: 0;
+  width: 60.1%;
+  cursor: pointer;
+  margin-top: 2px;
+  border-radius: 4px;
+  max-height: 50vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-align: left;
+  @media only screen and (max-width: 678px) {
+    width: 90%;
+    max-height: 30vh;
+  }
+  li{
+    font-size: 15px;
+    padding: 15px 20px;
+    @media only screen and (max-width: 678px) {
+      padding: 10px 15px;
+    }
+    &:hover{
+      background: #eee;
+    }
+  }
+}
