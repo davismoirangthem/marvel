@@ -1,0 +1,38 @@
+.common_header{
+    header{
+        background-color: #222529;
+        text-align: center;
+        .remove_left_margin{
+            min-height: auto;
+        }
+        .search_icon{
+            svg{
+                font-size: 30px;
+            }
+        }
+        @media only screen and (max-width: 678px) {
+            text-align: left;
+            padding-left: 0; 
+            .remove_left_margin{
+                padding: 0;
+                display: flex;
+                align-content: center;
+                justify-content: space-between;
+            }
+        }
+        .logo{
+            margin: 0 auto;
+            background-color: #ED3833;
+            padding: 15px 25px;
+            text-transform: uppercase;
+            font-size: 18px;
+            font-weight: bolder;
+            cursor: pointer;
+            @media only screen and (max-width: 678px) {
+                font-size: 16px;
+                padding: 16px;
+                margin: 0
+            }
+        }
+    }
+}
