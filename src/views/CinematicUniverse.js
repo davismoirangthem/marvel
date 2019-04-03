@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CommonHeader from '../components/CommonHeader';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
 import HeroCard from '../components/HeroCard';
-import '../styles/CinematicUniverse.css';
+import '../styles/CinematicUniverse.scss';
 import characterManager from '../actions/characterManager';
 import mcuController from '../controllers/mcuController';
 
+let allChar = [], mostSearched = [], totalChar = [];
 class CinematicUniverse extends Component{
   constructor(props){
     super(props);
@@ -50,42 +50,79 @@ class CinematicUniverse extends Component{
     }
   }
 
+  randomize = () => {
+    if(allChar.length === 0){
+      allChar = this.state.characters;
+      if(mostSearched.length === 0)
+        mostSearched = allChar
+          .map((a) => ({sort: Math.random(), value: a}))
+          .sort((a, b) => a.sort - b.sort)
+          .map((a) => a.value)
+          .splice(0,4);
+      if(totalChar.length === 0)
+        totalChar = allChar.sort((a, b) => a.name.localeCompare(b.name))
+    }
+  }
+
   selectHero = (id) => {
     this.setState({ showSuggest: false });
     this.props.history.push(`mcu/character/${id}`);
   }
 
   render(){
+    this.randomize();
     return(
       <div>
-        <CommonHeader title='Marvel Cinematic Universe'/>
-        <div className='search-container'>
-          <TextField type='text' label="Type a character's name" margin='dense' variant='outlined' fullWidth={true}
-            onChange={this.handleSearch}
-          />
-          {this.state.showSuggest && this.state.suggestions.length > 0 &&
-            <div className='autosuggest-box'>
-              {this.state.suggestions.map((character, key) => {
-                return (
-                  <React.Fragment key={key}>
-                    <p onClick={() => this.selectHero(character.id)}>{ character.name }</p>
-                    <Divider />
-                  </React.Fragment>
+        <CommonHeader title='Marvel Cinematic Universe' history={this.props.history}/>
+        <div className='search-container' id="search-container">
+          <div className="autosuggest_container">
+          <h1 className="welcome-tag">Welcome to <br className="mobile-break"/>Marvel Cinematic Universe</h1>
+            <input type='text' placeholder="Search character like Iron man, Ant man.."
+              onChange={this.handleSearch}
+              onBlur={this.hideSuggest}
+            />
+            {this.state.showSuggest && this.state.suggestions.length > 0 &&
+              <ul className='autosuggest-box'>
+                {this.state.suggestions.map((character, key) => {
+                  return (
+                    <React.Fragment key={key}>
+                      <li onClick={(e) => this.selectHero(character.id)}>{ character.name }</li>
+                      <Divider />
+                    </React.Fragment>
+                  )
+                })}
+              </ul>
+            }
+          </div>
+        </div>
+
+        <div className="position_relative">
+          <div className='main-container most_searched_container'>
+          <h2 className="welcome-tag featured_char_text">Most Searched</h2>
+            <Grid container spacing={8}>
+              {mostSearched.map((character,key) => {
+                return(
+                  <Grid item xs={6} sm={6} md={4} lg={3} key={key} >
+                    <HeroCard character={character} history={this.props.history}/>
+                  </Grid>
                 )
               })}
-            </div>
-          }
-        </div>
-        <div className='main-container'>
-          <Grid container spacing={24}>
-            {this.state.characters.map((character,key) => {
-              return(
-                <Grid item xs={12} sm={6} md={4} lg={3} key={key}>
-                  <HeroCard character={character} history={this.props.history}/>
-                </Grid>
-              )
-            })}
-          </Grid>
+            </Grid>
+          </div>
+
+          <div className='main-container'>
+          <h2 className="welcome-tag featured_char_text">All Characters</h2>
+            <Grid container spacing={8}>
+              {totalChar.map((character,key) => {
+                return(
+                  <Grid item xs={6} sm={6} md={4} lg={2} key={key} >
+                    <HeroCard character={character} history={this.props.history}/>
+                  </Grid>
+                )
+              })}
+            </Grid>
+          </div>
+
         </div>
       </div>
     );

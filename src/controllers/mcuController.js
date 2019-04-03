@@ -5,7 +5,7 @@ const headers = {
   'Accept': 'application/json'
 };
 
-const apiUrl = 'http://localhost:3005/mcu';
+const apiUrl = 'http://35.244.42.248:3005/mcu';
 
 function getCharacter(id){
   let endPoint = `/character/id/${id}`;
