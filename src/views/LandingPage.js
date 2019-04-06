@@ -12,7 +12,7 @@ class LandingPage extends Component{
         <center>
           <h1>RIP STAN LEE</h1>
           <Button variant="contained" color="primary" onClick={this.handleClick}>
-            Explore Heroes from the Marvel Cinematic Universe
+            Explore the Marvel Cinematic Universe
           </Button>
         </center>
       </div>

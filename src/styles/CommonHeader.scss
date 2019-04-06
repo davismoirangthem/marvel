@@ -2,8 +2,16 @@
     header{
         background-color: #222529;
         text-align: center;
+        box-shadow: none;
         .remove_left_margin{
+            padding: 0px 50px;
             min-height: auto;
+            display: flex;
+            align-content: center;
+            justify-content: space-between;
+            .back-btn{
+              margin-right: 20px;  
+            }
         }
         .search_icon{
             svg{
@@ -12,7 +20,7 @@
         }
         @media only screen and (max-width: 678px) {
             text-align: left;
-            padding-left: 0; 
+            padding-left: 0;
             .remove_left_margin{
                 padding: 0;
                 display: flex;
@@ -21,18 +29,57 @@
             }
         }
         .logo{
-            margin: 0 auto;
             background-color: #ED3833;
             padding: 15px 25px;
             text-transform: uppercase;
             font-size: 18px;
             font-weight: bolder;
             cursor: pointer;
+            display: inline-block;
             @media only screen and (max-width: 678px) {
-                font-size: 16px;
-                padding: 16px;
+                font-size: 12px;
+                padding: 16px 14px;
                 margin: 0
             }
         }
     }
+    .header_search_container{
+      .header_autosuggest_container{
+        input{
+          border-radius: 60px;
+          padding: 12px 15px;
+          border: 0;
+          outline: 0;
+          width: 317px;
+          font-size: 14px;
+          color: #eee;
+          background: rgba(0,0,0, 0.4);
+          transition: all 0.3s ease-in-out;
+        }
+        .search_autosuggest-box{
+          width: 350px;
+          position: absolute;
+          background: rgba(0,0,0,0.9);
+          margin-top: 5px;
+          list-style-type: none;
+          padding-left: 0;
+          text-align: left;
+          max-height: 40vh;
+          overflow-y: scroll;
+          border-radius: 4px;
+          li{
+            font-size: 15px;
+            padding: 12px 15px;
+            list-style-type: none;
+            cursor: pointer;
+            &:hover{
+              background-color: rgba(0,0,0,0.7);
+            }
+          }
+        }
+      }
+    }
+  .elevation{
+    box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+  }
 }
