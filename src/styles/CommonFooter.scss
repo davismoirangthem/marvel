@@ -8,14 +8,24 @@
     color: #eee;
     font-weight: lighter;
     font-size: 14px;
+    @media only screen and (max-width: 678px) {
+      text-align: center;
+    }
     .made{
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      @media only screen and (max-width: 678px) {
+        justify-content: center;
+        margin-top: 5px;
+      }
     }
     .heart{
       color: #E74C3C;
       margin: 0 5px;
+      @media only screen and (max-width: 678px) {
+        width: 17px;
+      }
     }
   }
 }
