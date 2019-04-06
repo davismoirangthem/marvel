@@ -1,0 +1,21 @@
+.footer_container{
+  background: #222529;
+  padding: 20px 10px;
+  margin-top: 20px;
+  .footer{
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #eee;
+    font-weight: lighter;
+    font-size: 14px;
+    .made{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .heart{
+      color: #E74C3C;
+      margin: 0 5px;
+    }
+  }
+}

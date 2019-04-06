@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CommonHeader from '../components/CommonHeader';
+import CommonFooter from '../components/CommonFooter';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import HeroCard from '../components/HeroCard';
-import '../styles/CinematicUniverse.scss';
 import characterManager from '../actions/characterManager';
 import mcuController from '../controllers/mcuController';
+import { isMobile } from '../helpers/Generic';
+import '../styles/CinematicUniverse.scss';
 
 let allChar = [], mostSearched = [], totalChar = [];
 class CinematicUniverse extends Component{
@@ -73,13 +75,12 @@ class CinematicUniverse extends Component{
     this.randomize();
     return(
       <div>
-        <CommonHeader title='Marvel Cinematic Universe' history={this.props.history}/>
+        <CommonHeader title='Marvel Cinematic Universe' history={this.props.history} pageType="HOME"/>
         <div className='search-container' id="search-container">
           <div className="autosuggest_container">
           <h1 className="welcome-tag">Welcome to <br className="mobile-break"/>Marvel Cinematic Universe</h1>
             <input type='text' placeholder="Search character like Iron man, Ant man.."
               onChange={this.handleSearch}
-              onBlur={this.hideSuggest}
             />
             {this.state.showSuggest && this.state.suggestions.length > 0 &&
               <ul className='autosuggest-box'>
@@ -122,8 +123,8 @@ class CinematicUniverse extends Component{
               })}
             </Grid>
           </div>
-
         </div>
+        <CommonFooter />
       </div>
     );
   }

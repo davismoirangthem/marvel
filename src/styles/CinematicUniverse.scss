@@ -39,14 +39,15 @@
   display:flex;
   justify-content: center;
   align-items: center;
-  background: url('../static/images/marvel_bg.jpg') bottom, rgba(0,0,0,1);
+  background: url('../static/images/marvel_bg.jpg')no-repeat bottom, rgba(0,0,0,1);
+  background-size: cover;
   @media only screen and (max-width: 678px){
     margin: 0 auto;
     width: 100%;
     height: 55vh;
     background: url('../static/images/marvel_bg.jpg'), rgba(0,0,0,1);
     background-size: cover;
-  } 
+  }
   .autosuggest_container{
     text-align: center;
     width: 60%;
