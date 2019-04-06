@@ -7,7 +7,6 @@ import Divider from '@material-ui/core/Divider';
 import HeroCard from '../components/HeroCard';
 import characterManager from '../actions/characterManager';
 import mcuController from '../controllers/mcuController';
-import { isMobile } from '../helpers/Generic';
 import '../styles/CinematicUniverse.scss';
 
 let allChar = [], mostSearched = [], totalChar = [];
@@ -30,7 +29,6 @@ class CinematicUniverse extends Component{
         this.props.dispatch(characterManager.updateMcuCharacter(characters));
         this.setState({ characters });
       }).catch(function(err){
-        //open dialog box
         console.log(err);
       });
     }
@@ -78,7 +76,7 @@ class CinematicUniverse extends Component{
         <CommonHeader title='Marvel Cinematic Universe' history={this.props.history} pageType="HOME"/>
         <div className='search-container' id="search-container">
           <div className="autosuggest_container">
-          <h1 className="welcome-tag">Welcome to <br className="mobile-break"/>Marvel Cinematic Universe</h1>
+          <h1 className="welcome-tag">Welcome to the <br className="mobile-break"/>Marvel Cinematic Universe Fan Page</h1>
             <input type='text' placeholder="Search character like Iron man, Ant man.."
               onChange={this.handleSearch}
             />
@@ -98,7 +96,7 @@ class CinematicUniverse extends Component{
         </div>
 
         <div className="position_relative">
-          <div className='main-container most_searched_container'>
+          {/*<div className='main-container most_searched_container'>
           <h2 className="welcome-tag featured_char_text">Most Searched</h2>
             <Grid container spacing={8}>
               {mostSearched.map((character,key) => {
@@ -109,7 +107,7 @@ class CinematicUniverse extends Component{
                 )
               })}
             </Grid>
-          </div>
+          </div> */}
 
           <div className='main-container'>
           <h2 className="welcome-tag featured_char_text">All Characters</h2>

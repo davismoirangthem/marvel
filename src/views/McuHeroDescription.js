@@ -11,7 +11,6 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import OpenInNew from '@material-ui/icons/OpenInNew';
 import CommonHeader from '../components/CommonHeader';
@@ -29,20 +28,22 @@ class McuHeroDescription extends Component{
   }
 
   componentDidMount(){
-    try{
-      let id = this.props.match.params.id;
-      if(id){
-        mcuController.getCharacter(id).then(character => {
-          this.setState({ character: character });
-        }).catch(err => {
-          //show dialog box
-          console.log(err);
-        });
-      }
+    this._getCharacter(this.props.match.params.id);
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(this.props !== nextProps){
+      this._getCharacter(nextProps.match.params.id)
     }
-    catch(err){
-      console.log('Unable to fetch id: ', err);
-    }
+  }
+
+  _getCharacter = (id) => {
+    mcuController.getCharacter(id).then(character => {
+      this.setState({ character: character });
+    }).catch(err => {
+      //show dialog box
+      console.log(err);
+    });
   }
 
   render(){
@@ -108,10 +109,10 @@ class McuHeroDescription extends Component{
                     {this.state.character.movies.map((movie, key) => (
                     <ListItem className="list_item" key={key}>
                       <ListItemText
-                        primary={movie.name}
+                        primary={`${movie.name} (${movie.year})`}
                         secondary={
                           <React.Fragment>
-                            {`As ${movie.appearanceType} in ${movie.year}`}
+                            {`${movie.appearanceType.toUpperCase()}`}
                           </React.Fragment>
                         }
                       />
