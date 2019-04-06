@@ -11,7 +11,6 @@ import { isMobile } from '../helpers/Generic';
 import MobileSearch from './MobileSearch';
 import '../styles/CommonHeader.scss';
 
-let scrollingPage = false;
 class CommonHeader extends Component{
   constructor(props){
     super(props);
@@ -57,7 +56,7 @@ class CommonHeader extends Component{
 
   selectHero = (id, name) => {
     this.setState({ showSuggest: false });
-    this.props.history.push(`mcu/character/${id}`);
+    this.props.history.push(`/mcu/character/${id}`);
   }
 
   goHome = (e) => {
