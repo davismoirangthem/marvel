@@ -54,7 +54,11 @@ class CommonHeader extends Component{
     }
   }
 
-  selectHero = (id, name) => {
+  selectHero = (id) => {
+    let input = document.getElementById('hero-input');
+      if(input){
+          input.value = '';
+      }
     this.setState({ showSuggest: false });
     this.props.history.push(`/mcu/character/${id}`);
   }
@@ -99,7 +103,7 @@ class CommonHeader extends Component{
             ) : (
               <div className="header_search_container">
                 <div className="header_autosuggest_container">
-                  <input type='text' placeholder="Search character like Iron man, Ant man.."
+                  <input type='text' id="hero-input" placeholder="Search character like Iron man, Ant man.."
                     onChange={this.handleSearch}
                   />
                     {this.state.showSuggest && this.state.suggestions.length > 0 &&
@@ -107,7 +111,7 @@ class CommonHeader extends Component{
                         {this.state.suggestions.map((character, key) => {
                           return (
                             <React.Fragment key={key}>
-                              <li onClick={(e) => this.selectHero(character.id, character.name)}>{ character.name }</li>
+                              <li onClick={(e) => this.selectHero(character.id)}>{ character.name }</li>
                               <Divider />
                             </React.Fragment>
                           )
