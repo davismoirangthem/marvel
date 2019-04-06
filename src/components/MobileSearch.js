@@ -17,6 +17,10 @@ function Transition(props) {
 }
 
 class MobileSearch extends React.Component {
+  onSelectHero = (id) => {
+    this.props.handleClose();
+    this.props.selectHero(id);
+  }
   render() {
     return (
         <Dialog
@@ -42,7 +46,7 @@ class MobileSearch extends React.Component {
           {this.props.suggestions.map((character, key) => {
             return (
               <React.Fragment key={key}>
-                <ListItem button onClick={(e) => this.props.selectHero(character.id, character.name)}>
+                <ListItem button onClick={(e) => this.onSelectHero(character.id)}>
                   <ListItemText primary={character.name} />
                 </ListItem>
                 <Divider />
